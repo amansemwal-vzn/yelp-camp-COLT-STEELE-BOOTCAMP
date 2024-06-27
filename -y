@@ -1,0 +1,397 @@
+[33mcommit bb75f377011d81baf450f0d6d3936588d98acaa9[m
+Author: Aman Semwal <amansemwal92@gmail.com>
+Date:   Fri Jun 14 11:46:03 2024 +0530
+
+    Basic CRUD done
+
+[1mdiff --git a/models/campground.js b/models/campground.js[m
+[1mnew file mode 100644[m
+[1mindex 0000000..fd92a73[m
+[1m--- /dev/null[m
+[1m+++ b/models/campground.js[m
+[36m@@ -0,0 +1,11 @@[m
+[32m+[m[32mconst mongoose = require('mongoose');[m
+[32m+[m[32mconst Schema = mongoose.Schema;[m
+[32m+[m
+[32m+[m[32mconst CampgroundSchema = new Schema({[m
+[32m+[m[32m    title: String,[m
+[32m+[m[32m    price: String,[m
+[32m+[m[32m    description: String,[m
+[32m+[m[32m    location: String[m
+[32m+[m[32m});[m
+[32m+[m
+[32m+[m[32mmodule.exports = mongoose.model('Campground', CampgroundSchema);[m
+\ No newline at end of file[m
+[1mdiff --git a/seeds/cities.js b/seeds/cities.js[m
+[1mnew file mode 100644[m
+[1mindex 0000000..17b9d68[m
+[1m--- /dev/null[m
+[1m+++ b/seeds/cities.js[m
+[36m@@ -0,0 +1,9002 @@[m
+[32m+[m[32mmodule.exports = [[m
+[32m+[m[32m    {[m
+[32m+[m[32m        city: "New York",[m
+[32m+[m[32m        growth_from_2000_to_2013: "4.8%",[m
+[32m+[m[32m        latitude: 40.7127837,[m
+[32m+[m[32m        longitude: -74.0059413,[m
+[32m+[m[32m        population: "8405837",[m
+[32m+[m[32m        rank: "1",[m
+[32m+[m[32m        state: "New York",[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m        city: "Los Angeles",[m
+[32m+[m[32m        growth_from_2000_to_2013: "4.8%",[m
+[32m+[m[32m        latitude: 34.0522342,[m
+[32m+[m[32m        longitude: -118.2436849,[m
+[32m+[m[32m        population: "3884307",[m
+[32m+[m[32m        rank: "2",[m
+[32m+[m[32m        state: "California",[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m        city: "Chicago",[m
+[32m+[m[32m        growth_from_2000_to_2013: "-6.1%",[m
+[32m+[m[32m        latitude: 41.8781136,[m
+[32m+[m[32m        longitude: -87.6297982,[m
+[32m+[m[32m        population: "2718782",[m
+[32m+[m[32m        rank: "3",[m
+[32m+[m[32m        state: "Illinois",[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m        city: "Houston",[m
+[32m+[m[32m        growth_from_2000_to_2013: "11.0%",[m
+[32m+[m[32m        latitude: 29.7604267,[m
+[32m+[m[32m        longitude: -95.3698028,[m
+[32m+[m[32m        population: "2195914",[m
+[32m+[m[32m        rank: "4",[m
+[32m+[m[32m        state: "Texas",[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m        city: "Philadelphia",[m
+[32m+[m[32m        growth_from_2000_to_2013: "2.6%",[m
+[32m+[m[32m        latitude: 39.9525839,[m
+[32m+[m[32m        longitude: -75.1652215,[m
+[32m+[m[32m        population: "1553165",[m
+[32m+[m[32m        rank: "5",[m
+[32m+[m[32m        state: "Pennsylvania",[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m        city: "Phoenix",[m
+[32m+[m[32m        growth_from_2000_to_2013: "14.0%",[m
+[32m+[m[32m        latitude: 33.4483771,[m
+[32m+[m[32m        longitude: -112.0740373,[m
+[32m+[m[32m        population: "1513367",[m
+[32m+[m[32m        rank: "6",[m
+[32m+[m[32m        state: "Arizona",[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m        city: "San Antonio",[m
+[32m+[m[32m        growth_from_2000_to_2013: "21.0%",[m
+[32m+[m[32m        latitude: 29.4241219,[m
+[32m+[m[32m        longitude: -98.49362819999999,[m
+[32m+[m[32m        population: "1409019",[m
+[32m+[m[32m        rank: "7",[m
+[32m+[m[32m        state: "Texas",[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m        city: "San Diego",[m
+[32m+[m[32m        growth_from_2000_to_2013: "10.5%",[m
+[32m+[m[32m        latitude: 32.715738,[m
+[32m+[m[32m        longitude: -117.1610838,[m
+[32m+[m[32m        population: "1355896",[m
+[32m+[m[32m        rank: "8",[m
+[32m+[m[32m        state: "California",[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m        city: "Dallas",[m
+[32m+[m[32m        growth_from_2000_to_2013: "5.6%",[m
+[32m+[m[32m        latitude: 32.7766642,[m
+[32m+[m[32m        longitude: -96.79698789999999,[m
+[32m+[m[32m        population: "1257676",[m
+[32m+[m[32m        rank: "9",[m
+[32m+[m[32m        state: "Texas",[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m        city: "San Jose",[m
+[32m+[m[32m        growth_from_2000_to_2013: "10.5%",[m
+[32m+[m[32m        latitude: 37.3382082,[m
+[32m+[m[32m        longitude: -121.8863286,[m
+[32m+[m[32m        population: "998537",[m
+[32m+[m[32m        rank: "10",[m
+[32m+[m[32m        state: "California",[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m        city: "Austin",[m
+[32m+[m[32m        growth_from_2000_to_2013: "31.7%",[m
+[32m+[m[32m        latitude: 30.267153,[m
+[32m+[m[32m        longitude: -97.7430608,[m
+[32m+[m[32m        population: "885400",[m
+[32m+[m[32m        rank: "11",[m
+[32m+[m[32m        state: "Texas",[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m        city: "Indianapolis",[m
+[32m+[m[32m        growth_from_2000_to_2013: "7.8%",[m
+[32m+[m[32m        latitude: 39.768403,[m
+[32m+[m[32m        longitude: -86.158068,[m
+[32m+[m[32m        population: "843393",[m
+[32m+[m[32m        rank: "12",[m
+[32m+[m[32m        state: "Indiana",[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m        city: "Jacksonville",[m
+[32m+[m[32m        growth_from_2000_to_2013: "14.3%",[m
+[32m+[m[32m        latitude: 30.3321838,[m
+[32m+[m[32m        longitude: -81.65565099999999,[m
+[32m+[m[32m        population: "842583",[m
+[32m+[m[32m        rank: "13",[m
+[32m+[m[32m        state: "Florida",[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m        city: "San Francisco",[m
+[32m+[m[32m        growth_from_2000_to_2013: "7.7%",[m
+[32m+[m[32m        latitude: 37.7749295,[m
+[32m+[m[32m        longitude: -122.4194155,[m
+[32m+[m[32m        population: "837442",[m
+[32m+[m[32m        rank: "14",[m
+[32m+[m[32m        state: "California",[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m        city: "Columbus",[m
+[32m+[m[32m        growth_from_2000_to_2013: "14.8%",[m
+[32m+[m[32m        latitude: 39.9611755,[m
+[32m+[m[32m        longitude: -82.99879419999999,[m
+[32m+[m[32m        population: "822553",[m
+[32m+[m[32m        rank: "15",[m
+[32m+[m[32m        state: "Ohio",[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m        city: "Charlotte",[m
+[32m+[m[32m        growth_from_2000_to_2013: "39.1%",[m
+[32m+[m[32m        latitude: 35.2270869,[m
+[32m+[m[32m        longitude: -80.8431267,[m
+[32m+[m[32m        population: "792862",[m
+[32m+[m[32m        rank: "16",[m
+[32m+[m[32m        state: "North Carolina",[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m        city: "Fort Worth",[m
+[32m+[m[32m        growth_from_2000_to_2013: "45.1%",[m
+[32m+[m[32m        latitude: 32.7554883,[m
+[32m+[m[32m        longitude: -97.3307658,[m
+[32m+[m[32m        population: "792727",[m
+[32m+[m[32m        rank: "17",[m
+[32m+[m[32m        state: "Texas",[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m        city: "Detroit",[m
+[32m+[m[32m        growth_from_2000_to_2013: "-27.1%",[m
+[32m+[m[32m        latitude: 42.331427,[m
+[32m+[m[32m        longitude: -83.0457538,[m
+[32m+[m[32m        population: "688701",[m
+[32m+[m[32m        rank: "18",[m
+[32m+[m[32m        state: "Michigan",[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m        city: "El Paso",[m
+[32m+[m[32m        growth_from_2000_to_2013: "19.4%",[m
+[32m+[m[32m        latitude: 31.7775757,[m
+[32m+[m[32m        longitude: -106.4424559,[m
+[32m+[m[32m        population: "674433",[m
+[32m+[m[32m        rank: "19",[m
+[32m+[m[32m        state: "Texas",[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m        city: "Memphis",[m
+[32m+[m[32m        growth_from_2000_to_2013: "-5.3%",[m
+[32m+[m[32m        latitude: 35.1495343,[m
+[32m+[m[32m        longitude: -90.0489801,[m
+[32m+[m[32m        population: "653450",[m
+[32m+[m[32m        rank: "20",[m
+[32m+[m[32m        state: "Tennessee",[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m        city: "Seattle",[m
+[32m+[m[32m        growth_from_2000_to_2013: "15.6%",[m
+[32m+[m[32m        latitude: 47.6062095,[m
+[32m+[m[32m        longitude: -122.3320708,[m
+[32m+[m[32m        population: "652405",[m
+[32m+[m[32m        rank: "21",[m
+[32m+[m[32m        state: "Washington",[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m        city: "Denver",[m
+[32m+[m[32m        growth_from_2000_to_2013: "16.7%",[m
+[32m+[m[32m        latitude: 39.7392358,[m
+[32m+[m[32m        longitude: -104.990251,[m
+[32m+[m[32m        population: "649495",[m
+[32m+[m[32m        rank: "22",[m
+[32m+[m[32m        state: "Colorado",[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m        city: "Washington",[m
+[32m+[m[32m        growth_from_2000_to_2013: "13.0%",[m
+[32m+[m[32m        latitude: 38.9071923,[m
+[32m+[m[32m        longitude: -77.0368707,[m
+[32m+[m[32m        population: "646449",[m
+[32m+[m[32m        rank: "23",[m
+[32m+[m[32m        state: "District of Columbia",[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m        city: "Boston",[m
+[32m+[m[32m        growth_from_2000_to_2013: "9.4%",[m
+[32m+[m[32m        latitude: 42.3600825,[m
+[32m+[m[32m        longitude: -71.0588801,[m
+[32m+[m[32m        population: "645966",[m
+[32m+[m[32m        rank: "24",[m
+[32m+[m[32m        state: "Massachusetts",[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m        city: "Nashville-Davidson",[m
+[32m+[m[32m        growth_from_2000_to_2013: "16.2%",[m
+[32m+[m[32m        latitude: 36.1626638,[m
+[32m+[m[32m        longitude: -86.7816016,[m
+[32m+[m[32m        population: "634464",[m
+[32m+[m[32m        rank: "25",[m
+[32m+[m[32m        state: "Tennessee",[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m        city: "Baltimore",[m
+[32m+[m[32m        growth_from_2000_to_2013: "-4.0%",[m
+[32m+[m[32m        latitude: 39.2903848,[m
+[32m+[m[32m        longitude: -76.6121893,[m
+[32m+[m[32m        population: "622104",[m
+[32m+[m[32m        rank: "26",[m
+[32m+[m[32m        state: "Maryland",[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m        city: "Oklahoma City",[m
+[32m+[m[32m        growth_from_2000_to_2013: "20.2%",[m
+[32m+[m[32m        latitude: 35.4675602,[m
+[32m+[m[32m        longitude: -97.5164276,[m
+[32m+[m[32m        population: "610613",[m
+[32m+[m[32m        rank: "27",[m
+[32m+[m[32m        state: "Oklahoma",[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m        city: "Louisville/Jefferson County",[m
+[32m+[m[32m        growth_from_2000_to_2013: "10.0%",[m
+[32m+[m[32m        latitude: 38.2526647,[m
+[32m+[m[32m        longitude: -85.7584557,[m
+[32m+[m[32m        population: "609893",[m
+[32m+[m[32m        rank: "28",[m
+[32m+[m[32m        state: "Kentucky",[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m        city: "Portland",[m
+[32m+[m[32m        growth_from_2000_to_2013: "15.0%",[m
+[32m+[m[32m        latitude: 45.5230622,[m
+[32m+[m[32m        longitude: -122.6764816,[m
+[32m+[m[32m        population: "609456",[m
+[32m+[m[32m        rank: "29",[m
+[32m+[m[32m        state: "Oregon",[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m        city: "Las Vegas",[m
+[32m+[m[32m        growth_from_2000_to_2013: "24.5%",[m
+[32m+[m[32m        latitude: 36.1699412,[m
+[32m+[m[32m        longitude: -115.1398296,[m
+[32m+[m[32m        population: "603488",[m
+[32m+[m[32m        rank: "30",[m
+[32m+[m[32m        state: "Nevada",[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m        city: "Milwaukee",[m
+[32m+[m[32m        growth_from_2000_to_2013: "0.3%",[m
+[32m+[m[32m        latitude: 43.0389025,[m
+[32m+[m[32m        longitude: -87.9064736,[m
+[32m+[m[32m        population: "599164",[m
+[32m+[m[32m        rank: "31",[m
+[32m+[m[32m        state: "Wisconsin",[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m        city: "Albuquerque",[m
+[32m+[m[32m        growth_from_2000_to_2013: "23.5%",[m
+[32m+[m[32m        latitude: 35.0853336,[m
+[32m+[m[32m        longitude: -106.6055534,[m
+[32m+[m[32m        population: "556495",[m
+[32m+[m[32m        rank: "32",[m
+[32m+[m[32m        state: "New Mexico",[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m        city: "Tucson",[m
+[32m+[m[32m        growth_from_2000_to_2013: "7.5%",[m
+[32m+[m[32m        latitude: 32.2217429,[m
+[32m+[m[32m        longitude: -110.926479,[m
+[32m+[m[32m        population: "526116",[m
+[32m+[m[32m        rank: "33",[m
+[32m+[m[32m        state: "Arizona",[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m        city: "Fresno",[m
+[32m+[m[32m        growth_from_2000_to_2013: "18.3%",[m
+[32m+[m[32m        latitude: 36.7468422,[m
+[32m+[m[32m        longitude: -119.7725868,[m
+[32m+[m[32m        population: "509924",[m
+[32m+[m[32m        rank: "34",[m
+[32m+[m[32m        state: "California",[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m        city: "Sacramento",[m
+[32m+[m[32m        growth_from_2000_to_2013: "17.2%",[m
+[32m+[m[32m        latitude: 38.5815719,[m
+[32m+[m[32m        longitude: -121.4943996,[m
+[32m+[m[32m        population: "479686",[m
+[32m+[m[32m        rank: "35",[m
+[32m+[m[32m        state: "California",[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m        city: "Long Beach",[m
+[32m+[m[32m        growth_from_2000_to_2013: "1.5%",[m
+[32m+[m[32m        latitude: 33.7700504,[m
+[32m+[m[32m        longitude: -118.1937395,[m
+[32m+[m[32m        population: "469428",[m
+[32m+[m[32m        rank: "36",[m
+[32m+[m[32m        state: "California",[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m        city: "Kansas City",[m
+[32m+[m[32m        growth_from_2000_to_2013: "5.5%",[m
+[32m+[m[32m        latitude: 39.0997265,[m
+[32m+[m[32m        longitude: -94.5785667,[m
+[32m+[m[32m        population: "467007",[m
+[32m+[m[32m        rank: "37",[m
+[32m+[m[32m        state: "Missouri",[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m        city: "Mesa",[m
+[32m+[m[32m        growth_from_2000_to_2013: "13.5%",[m
+[32m+[m[32m        latitude: 33.4151843,[m
+[32m+[m[32m        longitude: -111.8314724,[m
+[32m+[m[32m        population: "457587",[m
+[32m+[m[32m        rank: "38",[m
+[32m+[m[32m        state: "Arizona",[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m        city: "Virginia Beach",[m
+[32m+[m[32m        growth_from_2000_to_2013: "5.1%",[m
+[32m+[m[32m        latitude: 36.8529263,[m
+[32m+[m[32m        longitude: -75.97798499999999,[m
+[32m+[m[32m        population: "448479",[m
+[32m+[m[32m        rank: "39",[m
+[32m+[m[32m        state: "Virginia",[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m        city: "Atlanta",[m
+[32m+[m[32m        growth_from_2000_to_2013: "6.2%",[m
+[32m+[m[32m        latitude: 33.7489954,[m
+[32m+[m[32m        longitude: -84.3879824,[m
+[32m+[m[32m        population: "447841",[m
+[32m+[m[32m        rank: "40",[m
+[32m+[m[32m        state: "Georgia",[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m        city: "Colorado Springs",[m
+[32m+[m[32m        growth_from_2000_to_2013: "21.4%",[m
+[32m+[m[32m        latitude: 38.8338816,[m
+[32m+[m[32m        longitude: -104.8213634,[m
+[32m+[m[32m        population:
